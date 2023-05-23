@@ -1,0 +1,30 @@
+version: "3.7"
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      - .env
+    environment:
+      - BOTID=${BOTID}
+      - CHANNELID=${CHANNELID}
+    restart: always
+
+  db:
+    image: mysql:5.7
+    env_file:
+      - .env
+    environment:
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./docker/mysql/data:/var/lib/mysql:rw
+      - ./schema/init.sql:/docker-entrypoint-initdb.d/init.sql:ro 
+
+
+# volumes:
+#   mysql-datavolume:
