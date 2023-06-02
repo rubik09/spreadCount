@@ -14,7 +14,7 @@ cron.schedule('* * * * *', async () => {
     });
     websoket.once('message', async function incoming(data) {
       const json = JSON.parse(data);
-      const beribit = json.Asks.slice(0, 2).map(item => { 
+      const beribit = json.Depth.Asks.slice(0, 2).map(item => { 
         return { rate: item.ExchangeRate }
     });
       const averageBeribit = Number(((beribit[0].rate + beribit[1].rate) / 2).toFixed(3));
