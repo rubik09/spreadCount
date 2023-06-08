@@ -30,7 +30,8 @@ cron.schedule('* * * * *', async () => {
       })
     })
   }
-  const beribit = await beribitSite()
+  const beribit = await beribitSite();
+  console.log(beribit)
   const averageBeribit = Number(((beribit[0].rate + beribit[1].rate) / 2).toFixed(3))
 
   const body = { fiat: 'RUB', page: 1, rows: 10, tradeType: 'buy', asset: 'USDT', countries: [], proMerchantAds: false, publisherType: null, payTypes: ['RaiffeisenBank'] }
