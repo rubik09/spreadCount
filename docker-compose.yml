@@ -2,12 +2,9 @@ version: "3.7"
 
 services:
   app:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    env_file:
-      - .env
+    image: spread_count:latest
     environment:
       - BOTID=${BOTID}
       - CHANNELID=${CHANNELID}
-    restart: always
+    env_file:
+      - /root/build/spreadCount/.env
