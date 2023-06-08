@@ -1,1 +1,1 @@
-export const { CHANNELID, BOTID } = process.env;
+export const { CHANNELID, BOTID } = process.env
