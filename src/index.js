@@ -6,7 +6,7 @@ import puppeteer from 'puppeteer'
 import { BOTID, CHANNELID } from './config.js'
 
 const bot = new TelegramBot(BOTID, { polling: true, filepath: false })
-cron.schedule('* * * * *', async () => {
+cron.schedule('*/10 * * * *', async () => {
   async function beribitSite () {
     const browser = await puppeteer.launch({
       headless: true,
